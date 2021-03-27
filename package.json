@@ -8,7 +8,9 @@
   "files": [
     "out"
   ],
-  "engines": {},
+  "engines": {
+    "node": "^15"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/felixfbecker/sourcegraph-css-stacking-contexts"
