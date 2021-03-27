@@ -56,7 +56,8 @@
     "menus": {
       "editor/title": [
         {
-          "action": "cssStackingContexts.toggleDecorations"
+          "action": "cssStackingContexts.toggleDecorations",
+          "when": "resource.language == 'css' || resource.language == 'scss'"
         }
       ]
     }
