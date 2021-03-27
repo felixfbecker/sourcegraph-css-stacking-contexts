@@ -24,13 +24,12 @@ export function activate(context: sourcegraph.ExtensionContext): void {
     const allWarningDecorations = new Map<string, sourcegraph.TextDocumentDecoration[]>()
 
     function decorate(editors: sourcegraph.ViewComponent[]): void {
-        console.log('decorate called', editors)
+        console.log('CSS Stacking Contexts: decorating editors', editors)
         for (const editor of editors) {
             try {
                 if (editor.type !== 'CodeEditor') {
                     continue
                 }
-                console.log('Decorating', editor.document.uri)
 
                 const propertyDecorations: sourcegraph.TextDocumentDecoration[] = []
                 const ruleDecorations: sourcegraph.TextDocumentDecoration[] = []
@@ -47,9 +46,7 @@ export function activate(context: sourcegraph.ExtensionContext): void {
 
                 // Walk all CSS declarations
                 root.walkDecls(declaration => {
-                    console.log('declaration')
                     if (establishesStackingContext(declaration)) {
-                        console.log('Establishes stacking context', nodeRange(declaration))
                         propertyDecorations.push({
                             range: nodeRange(declaration),
                             after: {
@@ -67,7 +64,6 @@ export function activate(context: sourcegraph.ExtensionContext): void {
                                 )
                             ) {
                                 for (let line = parentRange.start.line; line <= parentRange.end.line; line++) {
-                                    console.log('pushing decoration for line', line)
                                     ruleDecorations.push({
                                         range: new sourcegraph.Range(line, 0, line, 1),
                                         backgroundColor: 'var(--color-bg-4)',
@@ -107,6 +103,7 @@ export function activate(context: sourcegraph.ExtensionContext): void {
     // Decorate whenever documents are opened or changed
     context.subscriptions.add(
         sourcegraph.workspace.openedTextDocuments.subscribe(document => {
+            console.log('textDocument opened', document.uri)
             const editors = sourcegraph.app.windows
                 .flatMap(window => window.visibleViewComponents)
                 .filter(editor => editor.type === 'CodeEditor' && editor.document.uri === document.uri)
