@@ -35,11 +35,11 @@
           null,
           "json"
         ],
-        "title": "${config.cssStackingContexts.showDecorations && \"Show\" || \"Hide\"} decorations",
+        "title": "${config.cssStackingContexts.showDecorations && \"Hide\" || \"Show\"} decorations",
         "category": "CSS Stacking Contexts",
         "actionItem": {
           "pressed": "config.cssStackingContexts.showDecorations",
-          "description": "${config.cssStackingContexts.showDecorations && \"Show\" || \"Hide\"} CSS stacking context highlights",
+          "description": "${config.cssStackingContexts.showDecorations && \"Hide\" || \"Show\"} CSS stacking context highlights",
           "iconURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARESURBVHhe7ZU7ixRpGEY700QnNDQTFkXBC7p4xcRAjQ0MDMXIn6BooGygm4gmGouJGBo4ijYiCIrBsqgw4UziHTGt7XfsXttnqrurquv76rucAw/MDbr6PYeeHgAAAAAAAAAAAEDaFIu9dbbht5ALJv3zs4XzX/oLyzb7mhAyYFz81/5CMT5CSJhp4nWEkBB1xOsIIWLmEa8jhIhoU7yOEALGpXgdIQSET/E6QuiQLsXrCMEjIYnXEYJDQhavI4QWiUm8jhDmIGbxOkKoQUridYQwhZTF6whhjJzE67IOIWfxuqxCQPzkJR0C4qsvqRAQ33xRh4D49hZVCIh3t6BDQLy/BRUC4rtbpyEgPpx5DQHx4c5pCIiPZ62GgPh4N1cIiE9ntUJAfLqbGgLi89maEL70N5xFfH4z5+a+9/3x+k3f+huvDX7wo+wPWXoz1+bc3K9+ChiEkP5KxSuEkN4qiVcIIf41Eq8QQnxrRbxCCOHPiXiFEMKbF/EKIXS/TsQrhOB/QYhXCMH9ghSv3Lh99+TT+5c+fXy6pfRNsPqzW9pN7bbDM4fH9r+e7992pf/uj4sPC9vpqw+KR/curj582Ztis2e3sxvaLUd3tRvbrYdn7x4VryOE+isTr+s8hL03/928+9b7Ozuuvyq2Xl4sfcjxEcLsVRE/mt3cbm8OzMVQi3tG4gezF/9/hNB8DcXr3IYwSbyOEKqvJfG6dkOoKl5HCJPnSLxuvhCaitcRwq95Eq+rF0Jb4nU5h9CReN30EFyJ1+UUQiDidb+H4Eu8LuUQAhWv+xnCnptvzwy+WZJfeltKIUQifrQlcz/8HOgRwhyLWrxCCNWXlHiFECYvafEKIfxaVuKVnEPIWrySUwiIn0LKISC+BimFgPg5iDkExLeIPdzxG/98KHlwL6sbQizi7aZBizfeHNl5/sXB7Z+e/Lm1uHPuenHq79elb8bHqoYwa12LtxvaLe2mdlu78fDc4TAuXhdrCCGJ1wUTwsrx/YffHN21VPaQulhCCFm8zm5vDoY6/GEvunziwOLKiQOFbenYvuLloR2lD6kLNYSYxNut7eaj+6+68BGCitfFGELM4nXOQpglXhdTCF2tTfG61kKoK15HCGvnUryucQjzitcRgl/xusohtC1el2MIXYrXTQzBtXhdDiGEJF73WwiDLy6U/ZGPpRhCyOLXbOB+FIHXTwBdCiHEJD6YfwW6GENIQrxCCLOXpHiFENYuC/EKIWQqXskxBMSXkEMIiK9AiiEgvgEphID4FogxBMQ7IKYQqgzxDYk9BMS3RGwhIN4RoYeAeE+EFgLiOyKEEBAfAF2H4HuIn0DqISC+IqmFgPiGxB4C4lsithAQ74jQQ0C8J0ILAfEd0XUIiA8E3yEgPlBch4D4SGg7BMRHyrwhID4R6oaA+ESZFQLiM0FDQHymmHTEAwAAAAAAAAAAQOr0ev8BiFcYiwyxpBkAAAAASUVORK5CYII="
         }
       }
