@@ -1,37 +1,76 @@
 {
+  "$schema": "https://raw.githubusercontent.com/sourcegraph/sourcegraph/main/client/shared/src/schema/extension.schema.json",
   "name": "css-stacking-contexts",
   "publisher": "felixfbecker",
   "displayName": "CSS Stacking Contexts",
   "description": "Highlights stacking contexts in CSS and ineffective z-index declarations.",
-  "icon": "images/icon.png",
-  "version": "1.0.15",
   "license": "MIT",
   "files": [
     "out"
   ],
-  "engines": {
-    "vscode": "^1.50.0"
-  },
+  "engines": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/felixfbecker/vscode-css-stacking-contexts"
   },
   "categories": [
     "Linters",
-    "Programming Languages"
+    "Programming languages"
   ],
   "activationEvents": [
     "onLanguage:css",
     "onLanguage:scss"
   ],
-  "main": "./out/extension.js",
-  "contributes": {},
+  "main": "./dist/css-stacking-contexts.js",
+  "contributes": {
+    "actions": [
+      {
+        "id": "cssStackingContexts.toggleDecorations",
+        "command": "updateConfiguration",
+        "commandArguments": [
+          [
+            "cssStackingContexts.showDecorations"
+          ],
+          "${!config.cssStackingContexts.showDecorations}",
+          null,
+          "json"
+        ],
+        "title": "${config.cssStackingContexts.showDecorations && \"Show\" || \"Hide\"} decorations",
+        "category": "CSS Stacking Contexts",
+        "actionItem": {
+          "label": "${config.cssStackingContexts.showDecorations && \"Show\" || \"Hide\"} decorations",
+          "pressed": "config.cssStackingContexts.showDecorations",
+          "iconURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARESURBVHhe7ZU7ixRpGEY700QnNDQTFkXBC7p4xcRAjQ0MDMXIn6BooGygm4gmGouJGBo4ijYiCIrBsqgw4UziHTGt7XfsXttnqrurquv76rucAw/MDbr6PYeeHgAAAAAAAAAAAEDaFIu9dbbht5ALJv3zs4XzX/oLyzb7mhAyYFz81/5CMT5CSJhp4nWEkBB1xOsIIWLmEa8jhIhoU7yOEALGpXgdIQSET/E6QuiQLsXrCMEjIYnXEYJDQhavI4QWiUm8jhDmIGbxOkKoQUridYQwhZTF6whhjJzE67IOIWfxuqxCQPzkJR0C4qsvqRAQ33xRh4D49hZVCIh3t6BDQLy/BRUC4rtbpyEgPpx5DQHx4c5pCIiPZ62GgPh4N1cIiE9ntUJAfLqbGgLi89maEL70N5xFfH4z5+a+9/3x+k3f+huvDX7wo+wPWXoz1+bc3K9+ChiEkP5KxSuEkN4qiVcIIf41Eq8QQnxrRbxCCOHPiXiFEMKbF/EKIXS/TsQrhOB/QYhXCMH9ghSv3Lh99+TT+5c+fXy6pfRNsPqzW9pN7bbDM4fH9r+e7992pf/uj4sPC9vpqw+KR/curj582Ztis2e3sxvaLUd3tRvbrYdn7x4VryOE+isTr+s8hL03/928+9b7Ozuuvyq2Xl4sfcjxEcLsVRE/mt3cbm8OzMVQi3tG4gezF/9/hNB8DcXr3IYwSbyOEKqvJfG6dkOoKl5HCJPnSLxuvhCaitcRwq95Eq+rF0Jb4nU5h9CReN30EFyJ1+UUQiDidb+H4Eu8LuUQAhWv+xnCnptvzwy+WZJfeltKIUQifrQlcz/8HOgRwhyLWrxCCNWXlHiFECYvafEKIfxaVuKVnEPIWrySUwiIn0LKISC+BimFgPg5iDkExLeIPdzxG/98KHlwL6sbQizi7aZBizfeHNl5/sXB7Z+e/Lm1uHPuenHq79elb8bHqoYwa12LtxvaLe2mdlu78fDc4TAuXhdrCCGJ1wUTwsrx/YffHN21VPaQulhCCFm8zm5vDoY6/GEvunziwOLKiQOFbenYvuLloR2lD6kLNYSYxNut7eaj+6+68BGCitfFGELM4nXOQpglXhdTCF2tTfG61kKoK15HCGvnUryucQjzitcRgl/xusohtC1el2MIXYrXTQzBtXhdDiGEJF73WwiDLy6U/ZGPpRhCyOLXbOB+FIHXTwBdCiHEJD6YfwW6GENIQrxCCLOXpHiFENYuC/EKIWQqXskxBMSXkEMIiK9AiiEgvgEphID4FogxBMQ7IKYQqgzxDYk9BMS3RGwhIN4RoYeAeE+EFgLiOyKEEBAfAF2H4HuIn0DqISC+IqmFgPiGxB4C4lsithAQ74jQQ0C8J0ILAfEd0XUIiA8E3yEgPlBch4D4SGg7BMRHyrwhID4R6oaA+ESZFQLiM0FDQHymmHTEAwAAAAAAAAAAQOr0ev8BiFcYiwyxpBkAAAAASUVORK5CYII="
+        }
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "cssStackingContexts.showDecorations": {
+          "description": "Whether to highlight CSS declarations that introduce new stacking contexts",
+          "type": "boolean"
+        }
+      }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "action": "cssStackingContexts.toggleDecorations"
+        }
+      ]
+    }
+  },
   "prettier": "@sourcegraph/prettierrc",
   "scripts": {
-    "vscode:prepublish": "npm run build",
-    "build": "tsc -p ./",
-    "eslint": "eslint src --ext ts",
-    "watch": "tsc -watch -p ./"
+    "eslint": "eslint 'src/**/*.ts'",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "parcel build --out-file dist/css-stacking-contexts.js src/css-stacking-contexts.ts --no-source-maps",
+    "symlink-package": "mkdirp dist && lnfs ./package.json ./dist/package.json",
+    "serve": "npm run symlink-package && parcel serve --no-hmr --no-source-maps --out-file dist/css-stacking-contexts.js src/css-stacking-contexts.ts",
+    "watch:typecheck": "tsc -p tsconfig.json -w",
+    "watch:build": "tsc -p tsconfig.dist.json -w",
+    "sourcegraph:prepublish": "npm run typecheck && npm run build"
   },
   "devDependencies": {
     "@sourcegraph/eslint-config": "^0.20.11",
@@ -44,14 +83,24 @@
     "@types/node": "^12.11.7",
     "@types/vscode": "^1.50.0",
     "eslint": "^7.9.0",
+    "lnfs-cli": "^2.1.0",
+    "mkdirp": "^1.0.4",
     "mocha": "^8.1.3",
-    "typescript": "^4.0.2",
-    "vscode-test": "^1.4.0"
+    "parcel-bundler": "^1.12.5",
+    "sourcegraph": "^25.1.0",
+    "typescript": "^4.2.3"
   },
   "dependencies": {
     "dedent": "^0.7.0",
     "lodash.debounce": "^4.0.8",
-    "postcss": "^8.1.1",
+    "postcss": "^8.2.8",
     "postcss-scss": "^3.0.2"
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome versions",
+    "last 1 Firefox versions",
+    "last 1 Edge versions",
+    "last 1 Safari versions"
+  ],
+  "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARESURBVHhe7ZU7ixRpGEY700QnNDQTFkXBC7p4xcRAjQ0MDMXIn6BooGygm4gmGouJGBo4ijYiCIrBsqgw4UziHTGt7XfsXttnqrurquv76rucAw/MDbr6PYeeHgAAAAAAAAAAAEDaFIu9dbbht5ALJv3zs4XzX/oLyzb7mhAyYFz81/5CMT5CSJhp4nWEkBB1xOsIIWLmEa8jhIhoU7yOEALGpXgdIQSET/E6QuiQLsXrCMEjIYnXEYJDQhavI4QWiUm8jhDmIGbxOkKoQUridYQwhZTF6whhjJzE67IOIWfxuqxCQPzkJR0C4qsvqRAQ33xRh4D49hZVCIh3t6BDQLy/BRUC4rtbpyEgPpx5DQHx4c5pCIiPZ62GgPh4N1cIiE9ntUJAfLqbGgLi89maEL70N5xFfH4z5+a+9/3x+k3f+huvDX7wo+wPWXoz1+bc3K9+ChiEkP5KxSuEkN4qiVcIIf41Eq8QQnxrRbxCCOHPiXiFEMKbF/EKIXS/TsQrhOB/QYhXCMH9ghSv3Lh99+TT+5c+fXy6pfRNsPqzW9pN7bbDM4fH9r+e7992pf/uj4sPC9vpqw+KR/curj582Ztis2e3sxvaLUd3tRvbrYdn7x4VryOE+isTr+s8hL03/928+9b7Ozuuvyq2Xl4sfcjxEcLsVRE/mt3cbm8OzMVQi3tG4gezF/9/hNB8DcXr3IYwSbyOEKqvJfG6dkOoKl5HCJPnSLxuvhCaitcRwq95Eq+rF0Jb4nU5h9CReN30EFyJ1+UUQiDidb+H4Eu8LuUQAhWv+xnCnptvzwy+WZJfeltKIUQifrQlcz/8HOgRwhyLWrxCCNWXlHiFECYvafEKIfxaVuKVnEPIWrySUwiIn0LKISC+BimFgPg5iDkExLeIPdzxG/98KHlwL6sbQizi7aZBizfeHNl5/sXB7Z+e/Lm1uHPuenHq79elb8bHqoYwa12LtxvaLe2mdlu78fDc4TAuXhdrCCGJ1wUTwsrx/YffHN21VPaQulhCCFm8zm5vDoY6/GEvunziwOLKiQOFbenYvuLloR2lD6kLNYSYxNut7eaj+6+68BGCitfFGELM4nXOQpglXhdTCF2tTfG61kKoK15HCGvnUryucQjzitcRgl/xusohtC1el2MIXYrXTQzBtXhdDiGEJF73WwiDLy6U/ZGPpRhCyOLXbOB+FIHXTwBdCiHEJD6YfwW6GENIQrxCCLOXpHiFENYuC/EKIWQqXskxBMSXkEMIiK9AiiEgvgEphID4FogxBMQ7IKYQqgzxDYk9BMS3RGwhIN4RoYeAeE+EFgLiOyKEEBAfAF2H4HuIn0DqISC+IqmFgPiGxB4C4lsithAQ74jQQ0C8J0ILAfEd0XUIiA8E3yEgPlBch4D4SGg7BMRHyrwhID4R6oaA+ESZFQLiM0FDQHymmHTEAwAAAAAAAAAAQOr0ev8BiFcYiwyxpBkAAAAASUVORK5CYII="
 }
