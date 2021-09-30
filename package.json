@@ -59,7 +59,7 @@
       "editor/title": [
         {
           "action": "cssStackingContexts.toggleDecorations",
-          "when": "resource.language == 'css' || resource.language == 'scss'"
+          "when": "(resource.language == 'css') || (resource.language == 'scss')"
         }
       ]
     }
